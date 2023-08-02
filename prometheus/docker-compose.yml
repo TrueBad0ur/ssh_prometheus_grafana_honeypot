@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  prometheus-ssh-honeypot:
+    container_name: prometheus-ssh-honeypot
+    image: shizunge/endlessh-go
+    ports:
+      - 22:2222
+    restart: unless-stopped
+    command: -enable_prometheus -geoip_supplier ip-api -prometheus_port 9100
+  exporter_vps:
+    restart: always
+    image: ngacareer/alpine-node-exporter:latest
+    container_name: exporter_vps
+    volumes:
+      - /proc:/usr/proc
+      - /sys:/usr/sys
+      - /:/rootfs
+  prometheus:
+    restart: always
+    image: prom/prometheus:v2.46.0
+    container_name: prometheus
+    ports:
+    - "9090:9090"
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+    command:
+    - --config.file=/etc/prometheus/prometheus.yml
+    - --web.config.file=/etc/prometheus/web.yml
