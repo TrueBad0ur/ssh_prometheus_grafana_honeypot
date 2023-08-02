@@ -13,8 +13,8 @@ This image and exporter written in golang was taken from [here](https://github.c
 
 */grafana/.env*
 ```
-- ADMIN_USER=YOURUSER
-- ADMIN_PASSWORD=YOURPASSWORD
+ADMIN_USER=YOURUSER
+ADMIN_PASSWORD=YOURPASSWORD
 ```
 
 */prometheus/prometheus/web.yml*
