@@ -17,7 +17,7 @@ ADMIN_USER=YOURUSER
 ADMIN_PASSWORD=YOURPASSWORD
 ```
 
-*/prometheus/prometheus/web.yml*
+*/prometheus/web.yml*
 ```
 basic_auth_users:
     admin: HASHEDPASSWORD
