@@ -23,7 +23,9 @@ services:
     ports:
     - "9090:9090"
     volumes:
-      - ./prometheus/:/etc/prometheus/
+      - ./web.yml:/etc/prometheus/web.yml
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/:/prometheus/
     command:
     - --config.file=/etc/prometheus/prometheus.yml
     - --web.config.file=/etc/prometheus/web.yml
